@@ -1,8 +1,5 @@
 """---------------------------------------------------------------------------
 
-Nombre: Felipe Andrés Tapia Siede, ICI paralelo 4
-Rut: 22235640-7
-
 Navegantes Estelares: La Ruta del Cristal Cósmico
 
 Propósito: Leer nombre de cada cadete y su n° posicional, la cantidad de
