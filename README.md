@@ -1,1 +1,1 @@
-$\color{rgb(89,133,86)}{\textsf{### Personal coding projects}}$
+$\color{rgba(255,0,0, 0.4)}{\textsf{lorem ipsum}}$
