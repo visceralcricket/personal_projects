@@ -1,1 +1,1 @@
-$\color{rgba(255,0,0, 0.4)}{\textsf{lorem ipsum}}$
+$\textcolor{red}{\textsf{lorem ipsum}}$
