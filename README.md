@@ -1,1 +1,1 @@
-$\textcolor{red}{\textsf{lorem ipsum}}$
+### Personal coding projects
