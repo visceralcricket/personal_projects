@@ -15,7 +15,7 @@ int main()
     printf(" %hu |", numbers[i]);
   }
   
-  printf("\n\nArray of factorial coefficients : ");
+  printf("\n\nArray of factorials from inputted values : ");
   
   
   for(i=0; i < MAX_NUMBERS; i++) {
