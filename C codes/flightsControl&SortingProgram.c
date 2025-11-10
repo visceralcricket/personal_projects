@@ -55,12 +55,10 @@ int cmp(const void *pivote, const void *elemento) {
     const tipoVuelo *ptrElemento = (const tipoVuelo *) (elemento);
 
     // Condición A-> Ordenar de acuerdo a la prioridad de los registros
-    if (ptrPivote->prioridad > ptrElemento->prioridad) return -1;
     if (ptrPivote->prioridad < ptrElemento->prioridad) return 1;
 
     // Sí los registros son iguales, es decir, no cumplen ningún caso de condicion A, el programa opta por la condición B:
     // Condición B-> Ordenar de acuerdo al tiempo de abordaje
-    if (ptrPivote->tiempoAbordaje < ptrElemento->tiempoAbordaje) return -1;
     if (ptrPivote->tiempoAbordaje > ptrElemento->tiempoAbordaje) return 1;
 
     // En caso de que los registros sean iguales en -ambas- condiciones, A y B, determinamos que es suficiente información para evaluar y omitimos el ordenamiento
