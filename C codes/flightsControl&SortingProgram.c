@@ -12,7 +12,14 @@ typedef struct { // Tipo de dato tipoVuelo
   
 } tipoVuelo;
 
-void poblarOrd(tipoVuelo *vector, size_t cantVuelos, size_t *talla); // Función poblar el vector de tipoVuelo's
+typedef struct {
+  
+  float maximoTiempoAbordaje;
+  size_t cantVuelosRepetidos;
+  
+} duplaValoresEstadist;
+
+void poblarOrd(tipoVuelo *vector, size_t cantVuelos, size_t *talla, duplaValoresEstadist *vectorCoeficientes); // Función poblar el vector de tipoVuelo's
 void mostrar(const tipoVuelo *vector, const size_t talla, const char *titulo);
 int cmp(const void *pivote, const void *elemento);
 size_t buscarCodigo(tipoVuelo *vector, size_t talla, size_t codigo); // Verificar si el código de vuelo está repetido
@@ -21,17 +28,22 @@ int main() {
     
     // Variables-> Cantidad de datos a procesar, talla final/real de la estructura formada
     size_t cantVuelos, talla = 0;
+    duplaValoresEstadist vectorCoeficientes = {0.0, 0};
+
     scanf("%zu", &cantVuelos);
     
     tipoVuelo vector[cantVuelos];
     
-    poblarOrd(vector, cantVuelos, &talla);
+    poblarOrd(vector, cantVuelos, &talla, &vectorCoeficientes);
     
     printf("Se registraron %zu vuelos, se procesarán %zu.\n", cantVuelos, talla);
     mostrar(vector, talla, "LISTADO ORIGINAL DE ENTREGAS ESTELARES");
     
     qsort(vector, talla, sizeof(tipoVuelo), cmp);
     mostrar(vector, talla, "LISTADO DE EJECUCIÓN DE ENTREGAS      ");
+    
+    printf("\n\t     ==== Mayor tiempo de abordaje: %.2f ====", vectorCoeficientes.maximoTiempoAbordaje);
+    printf("\n\t==== Cantidad de códigos de vuelo repetidos: %zu ====", vectorCoeficientes.cantVuelosRepetidos);
     
     return 0;
 }
@@ -84,31 +96,43 @@ void mostrar(const tipoVuelo *vector, const size_t talla, const char *titulo) {
   printf(" -------------------------------------------------------- \n\n");
 }
 
-void poblarOrd(tipoVuelo *vector, size_t cantVuelos, size_t *talla) {
+void poblarOrd(tipoVuelo *vector, size_t cantVuelos, size_t *talla, duplaValoresEstadist *vectorCoeficientes) {
   
+  float mayorTiempo = 0.0;
+  size_t repetidos = 0;
   tipoVuelo registro; // Crear el registro que se va a leer por cada ciclo-> se irá reseteando
   
   for(size_t i=0; i<cantVuelos; i++) {
     
-    scanf("%zu %zu %zu %f", &registro.codigoVuelo, &registro.destino, &registro.prioridad, &registro.tiempoAbordaje); // Lectura
+    scanf("%zu %zu %zu %f", &registro.codigoVuelo,
+    &registro.destino,
+    &registro.prioridad,
+    &registro.tiempoAbordaje); // Lectura
     
     if(*talla == 0) { // Comprobar si es el primer dato para así no malgastar tiempo verificando si su código está repetido
+    
       vector[*talla] = registro;
       (*talla)++; // Aumentar talla/tamaño real
     }
     
-    else {
       
-      size_t posicionCodigo = buscarCodigo(vector, *talla, registro.codigoVuelo); // Verificar que el código de vuelo no se repite
+    size_t posicionCodigo = buscarCodigo(vector, *talla, registro.codigoVuelo); // Verificar que el código de vuelo no se repite
       
-      if(posicionCodigo==NULO) { // Caso-> si el código no está presente en el registro, se añade, de lo contrario-> se omite/continúa el ciclo
+    if(posicionCodigo==NULO) { // Caso-> si el código no está presente en el registro, se añade, de lo contrario-> se omite/continúa el ciclo
         
-        vector[*talla] = registro;
-        (*talla)++;
-      }
-      
+      vector[*talla] = registro;
+      (*talla)++;
+        
     }
     
+    else repetidos++;
+    
+    if(registro.tiempoAbordaje > mayorTiempo) {
+      
+      mayorTiempo = registro.tiempoAbordaje;
+    }
   }
   
+  vectorCoeficientes->maximoTiempoAbordaje = mayorTiempo;
+  vectorCoeficientes->cantVuelosRepetidos = repetidos;
 }
