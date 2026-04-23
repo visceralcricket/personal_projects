@@ -19,7 +19,7 @@ typedef List List;
 List *list_create() {
   List *newList = (List *)malloc(sizeof(List));
   if (newList == NULL) {
-    return NULL; // Fallo en la asignación de memoria
+    return NULL; // Memory allocation failed
   }
   newList->head = NULL;
   newList->tail = NULL;
@@ -30,7 +30,7 @@ List *list_create() {
 
 void *list_first(List *L) {
   if (L == NULL || L->head == NULL) {
-    return NULL; // Lista vacía o no inicializada
+    return NULL; // Empty list or without a head
   }
   L->current = L->head;
   return L->current->data;
@@ -38,7 +38,7 @@ void *list_first(List *L) {
 
 void *list_next(List *L) {
   if (L == NULL || L->current == NULL || L->current->next == NULL) {
-    return NULL; // Lista vacía, no inicializada o no hay más elementos
+    return NULL; // Same as previous + no node to next
   }
   L->current = L->current->next;
   return L->current->data;
@@ -46,16 +46,16 @@ void *list_next(List *L) {
 
 void list_pushFront(List *L, void *data) {
   if (L == NULL) {
-    return; // Lista no inicializada
+    return;
   }
   Node *newNode = (Node *)malloc(sizeof(Node));
   if (newNode == NULL) {
-    return; // Fallo en la asignación de memoria
+    return;
   }
   newNode->data = data;
   newNode->next = L->head;
   L->head = newNode;
-  if (L->tail == NULL) { // Si la lista estaba vacía
+  if (L->tail == NULL) { // If the list was empty => has no tail
     L->tail = newNode;
   }
   L->size++;
@@ -67,11 +67,11 @@ void list_pushBack(List *L, void *data) {
   }
   Node *newNode = (Node *)malloc(sizeof(Node));
   if (newNode == NULL) {
-    return; // Fallo en la asignación de memoria
+    return;
   }
   newNode->data = data;
   newNode->next = NULL;
-  if (L->tail == NULL) { // Si la lista está vacía
+  if (L->tail == NULL) { // Same empty list with no tail as before
     L->head = newNode;
     L->tail = newNode;
   } else {
@@ -83,17 +83,17 @@ void list_pushBack(List *L, void *data) {
 
 void list_pushCurrent(List *L, void *data) {
   if (L == NULL || L->current == NULL) {
-    return; // Lista no inicializada o current no está definido
+    return; // Empty list or current node not defined
   }
   Node *newNode = (Node *)malloc(sizeof(Node));
   if (newNode == NULL) {
-    return; // Fallo en la asignación de memoria
+    return;
   }
   newNode->data = data;
   newNode->next = L->current->next;
   L->current->next = newNode;
   if (L->current == L->tail) {
-    L->tail = newNode; // Actualizar tail si se inserta al final
+    L->tail = newNode; // Update tail if it's added at the end of the list
   }
   L->size++;
 }
@@ -102,12 +102,12 @@ void list_pushCurrent(List *L, void *data) {
 
 void *list_popFront(List *L) {
   if (L == NULL || L->head == NULL) {
-    return NULL; // Lista vacía o no inicializada
+    return NULL;
   }
   Node *temp = L->head;
   L->head = L->head->next;
   if (L->head == NULL) {
-    L->tail = NULL; // La lista ahora está vacía
+    L->tail = NULL; // Update tail to make it a fully-empty list
   }
   void *data = temp->data;
   free(temp);
@@ -117,9 +117,9 @@ void *list_popFront(List *L) {
 
 void *list_popBack(List *L) {
   if (L == NULL || L->head == NULL) {
-    return NULL; // Lista vacía o no inicializada
+    return NULL;
   }
-  if (L->head == L->tail) { // Solo un elemento en la lista
+  if (L->head == L->tail) { // Only 1 node in the list
     return list_popFront(L);
   }
   Node *current = L->head;
@@ -140,7 +140,7 @@ int list_size(List *L){
 
 void *list_popCurrent(List *L) {
   if (L == NULL || L->current == NULL) {
-    return NULL; // Lista no inicializada o current no definido
+    return NULL;
   }
   if (L->current == L->head) {
     return list_popFront(L);
@@ -152,7 +152,7 @@ void *list_popCurrent(List *L) {
 
   temp->next = L->current->next;
   if (L->current == L->tail) {
-    L->tail = temp; // Actualizar tail si se elimina el último elemento
+    L->tail = temp; // Update tail if it's equal to the node to delete
   }
   void *data = L->current->data;
   free(L->current);
@@ -163,7 +163,7 @@ void *list_popCurrent(List *L) {
 
 void list_clean(List *L) {
   if (L == NULL) {
-    return; // Lista no inicializada
+    return;
   }
   Node *current = L->head;
   Node *next;
