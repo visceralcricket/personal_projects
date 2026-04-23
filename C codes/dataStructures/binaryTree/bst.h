@@ -7,6 +7,7 @@ struct Node {
     Node *left;
     Node *right;
 };
+
 // Create a node for the tree structure and returns its pointer
 Node *createNode(int value);
 
