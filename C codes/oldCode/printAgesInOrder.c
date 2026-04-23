@@ -129,6 +129,4 @@ void insertarOrdenado(int *vector, int size) {
       }
     }
   }
-  
-  
 }

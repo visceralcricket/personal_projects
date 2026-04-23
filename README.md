@@ -1,1 +1,1 @@
-### ++ Personal projects, mostly obsolete codes and whatever --
+### ++ Personal projects and code practicing --
