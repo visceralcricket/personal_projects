@@ -1,10 +1,8 @@
 #include "bst.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 
 typedef struct Node Node;
-
 
 struct Node {
     int data;
@@ -12,10 +10,10 @@ struct Node {
     Node *right;
 };
 
-Node *createNode(int value);
-Node *insertTree(Node *node, int value);
-void freeTree(Node *node);
-void showTree(Node *root);
+// Still have to add the actual search function here
+/* +++
+Node *searchTree(Node *node, int value);
+--- */
 
 void freeTree(Node *node) {
     if(node==NULL) return;
