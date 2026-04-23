@@ -3,37 +3,37 @@
 
 typedef struct List List;
 
-// Esta función crea una lista vacía y devuelve un puntero a la lista.
+// Creates a list and returns its pointer
 List *list_create();
 
-// Esta función devuelve un puntero al primer elemento de la lista.
+// Returns the pointer to the first node of the list
 void *list_first(List *L);
 
-// Esta función mueve el puntero de la lista al siguiente elemento y devuelve un
-// puntero a dicho elemento.
+// Moves pointer 'current' to the next node and returns its pointer
 void *list_next(List *L);
 
-// Esta función inserta un nuevo elemento al inicio de la lista.
+// Inserts a new node at the start of the list
 void list_pushFront(List *L, void *dato);
 
-// Esta función inserta un nuevo elemento al final de la lista.
+// Inserts a new node at the end of the list
 void list_pushBack(List *L, void *dato);
 
-// Esta función inserta un nuevo elemento a continuación del actual de la lista.
+// // Inserts a new node right after the 'current' one
 void list_pushCurrent(List *L, void *dato);
 
-// Esta función elimina el primer elemento de la lista.
+// Deletes the first element of the list
 void *list_popFront(List *L);
 
-// Esta función elimina el último elemento de la lista.
+// Deletes the last element of the list
 void *list_popBack(List *L);
 
-// Esta función elimina el elemento actual de la lista.
+// Deletes the node 'current' of the list
 void *list_popCurrent(List *L);
 
-// Esta función elimina todos los elementos de la lista.
+// Deletes all the nodes and leaves the list clean
 void list_clean(List *L);
 
+// Returns the logical size of the list
 int list_size(List* L);
 
 #endif
