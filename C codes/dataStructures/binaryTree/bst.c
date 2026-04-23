@@ -10,17 +10,11 @@ struct Node {
     Node *right;
 };
 
-// Still have to add the actual search function here
-/* +++
-Node *searchTree(Node *node, int value);
---- */
-
 Node *createNode(int value) {
 
     Node *newNode = malloc(sizeof(Node));
     if(!newNode) {
         puts("Not enough memory for the program to work.");
-        // closeProgram();
         exit(EXIT_FAILURE);
     }
     newNode->data = value;
