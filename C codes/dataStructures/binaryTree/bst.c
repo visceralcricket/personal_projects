@@ -2,14 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node Node;
-
-struct Node {
-    int data;
-    Node *left;
-    Node *right;
-};
-
 Node *createNode(int value) {
 
     Node *newNode = malloc(sizeof(Node));
@@ -41,7 +33,7 @@ Node *searchTree(Node *node, int value) {
     return node;
 }
 
-Node *searchMin(Node *node, int value) {
+Node *searchMin(Node *node) {
     while(node->left != NULL) node = node->left;
     return node;
 }

@@ -2,6 +2,7 @@
 #define BST_H
 
 typedef struct Node Node;
+
 struct Node {
     int data;
     Node *left;
@@ -18,7 +19,7 @@ Node *insertTree(Node *node, int value);
 Node *searchTree(Node *node, int value);
 
 // Searches for the smallest value and returns the pointer to its node
-Node *searchMin(Node *node, int value);
+Node *searchMin(Node *node);
 
 // Cleans the tree of all its nodes
 void freeTree(Node *node);
