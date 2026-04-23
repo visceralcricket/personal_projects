@@ -10,6 +10,7 @@ struct Node {
 
 Node *createNode(int value);
 Node *insertTree(Node *node, int value);
+// Node *searchTree(Node *node, int value);
 
 void freeTree(Node *node);
 void showTree(Node *root);
