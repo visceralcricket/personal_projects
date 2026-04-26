@@ -2,6 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+struct Node {
+    int data;
+    Node *left;
+    Node *right;
+};
+
 Node *createNode(int value) {
 
     Node *newNode = malloc(sizeof(Node));

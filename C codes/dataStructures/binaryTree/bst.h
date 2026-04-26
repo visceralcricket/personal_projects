@@ -3,12 +3,6 @@
 
 typedef struct Node Node;
 
-struct Node {
-    int data;
-    Node *left;
-    Node *right;
-};
-
 // Create a node for the tree structure and returns its pointer
 Node *createNode(int value);
 
