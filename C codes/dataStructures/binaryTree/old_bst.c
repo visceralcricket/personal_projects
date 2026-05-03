@@ -1,4 +1,4 @@
-#include "bst.h"
+#include "old_bst.h"
 #include <stdio.h>
 #include <stdlib.h>
 

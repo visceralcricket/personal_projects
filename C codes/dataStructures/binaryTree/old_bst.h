@@ -1,5 +1,5 @@
-#ifndef BST_H
-#define BST_H
+#ifndef OLD_BST_H
+#define OLD_BST_H
 
 typedef struct Node Node;
 
