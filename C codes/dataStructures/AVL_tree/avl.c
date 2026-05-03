@@ -1,5 +1,7 @@
 #include "avl.h"
 #include <stdio.h>
+#include <stdlib.h>
+#define INT_INPUT_ERROR 0
 
 struct avl_node {
     Pair *pair;
@@ -16,7 +18,22 @@ struct tree_map {
 --- */
 // tree_map createTreeMap(int key, void *data);
 
+void handleError(int errValue) {
+    switch(errValue) {
+        case INT_INPUT_ERROR:
+            puts("Non-valid integer detected, please try again.");
+            break;
+
+        default:
+            puts("Unexpected error, please try again.");
+            break;
+    }
+    exit(EXIT_FAILURE);
+}
+
 avl_node *createNode(int key, void *data) {
+    if(data==NULL) return NULL;
+
 
     avl_node *new = (avl_node *) malloc(sizeof(avl_node));
     if(!new) return NULL;
@@ -38,6 +55,8 @@ avl_node *createNode(int key, void *data) {
 /* +++ Rotations ---*/
 
 avl_node *rotateRight(avl_node *y) {
+    if(y==NULL) return NULL;
+
     avl_node x = node->left;
     avl_node T2 = x->right;
 
@@ -51,6 +70,8 @@ avl_node *rotateRight(avl_node *y) {
 }
 
 avl_node *rotateLeft(avl_node *x) {
+    if(x==NULL) return NULL;
+
     avl_node *y = x->right;
     avl_node T2 = y->left;
 
@@ -65,7 +86,8 @@ avl_node *rotateLeft(avl_node *x) {
 
 /* +++ Helpers ---*/
 int getHeight(avl_node *node) {
-    return (node == NULL) ? 0 : node->height;
+    if(node==NULL) handleError(INT_INPUT_ERROR);
+    else return (node == NULL) ? 0 : node->height;
 }
 
 int max(int a, int b) {
@@ -73,5 +95,6 @@ int max(int a, int b) {
 }
 
 int getBalance(avl_node *node) {
-    return (node == NULL) ? NULL : getHeight(node->right) - getHeight(node->left);
+    if(node==NULL) handleError(INT_INPUT_ERROR);
+    else return getHeight(node->right) - getHeight(node->left);
 }
