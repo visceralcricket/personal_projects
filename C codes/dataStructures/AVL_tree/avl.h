@@ -9,14 +9,6 @@ typedef struct Pair {
     void *value;
 } Pair;
 
-// Testing function
-void *handleData(int data) {
-    void *pData = (void *) malloc(sizeof(int));
-    if(!pData) return NULL;
-    pData = &data;
-    return pData;
-}
-
 // Create a node for the tree structure and returns its pointer
 avl_node *createNode(int key, void *data)
 

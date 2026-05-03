@@ -29,7 +29,9 @@ avl_node *createNode(int key, void *data) {
     return new;
 }
 
-avl_node *insertNode(avl_node *node, int key, void *data);
+avl_node *insertNode(avl_node *node, int key, void *data) {
+    
+}
 
 /* +++ Rotations ---*/
 
