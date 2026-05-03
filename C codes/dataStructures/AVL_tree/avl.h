@@ -2,6 +2,20 @@
 #define AVL_H
 
 typedef struct avl_node avl_node;
+typedef struct tree_map tree_map;
+
+typedef struct Pair {
+    int key;
+    void *data;
+} Pair;
+
+// Testing function
+void *handleData(int data) {
+    void *pData = (void *) malloc(sizeof(int));
+    if(!pData) return NULL;
+    pData = &data;
+    return pData;
+}
 
 // Create a node for the tree structure and returns its pointer
 avl_node *createNode(int value);
