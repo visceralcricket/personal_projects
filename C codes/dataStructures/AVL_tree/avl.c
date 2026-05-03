@@ -57,8 +57,8 @@ avl_node *createNode(int key, void *data) {
 avl_node *rotateRight(avl_node *y) {
     if(y==NULL) return NULL;
 
-    avl_node x = node->left;
-    avl_node T2 = x->right;
+    avl_node *x = node->left;
+    avl_node *T2 = x->right;
 
     x->right = y;
     y->left = T2;
@@ -73,7 +73,7 @@ avl_node *rotateLeft(avl_node *x) {
     if(x==NULL) return NULL;
 
     avl_node *y = x->right;
-    avl_node T2 = y->left;
+    avl_node *T2 = y->left;
 
     y->left = x;
     x->right = T2;
@@ -86,8 +86,7 @@ avl_node *rotateLeft(avl_node *x) {
 
 /* +++ Helpers ---*/
 int getHeight(avl_node *node) {
-    if(node==NULL) handleError(INT_INPUT_ERROR);
-    else return (node == NULL) ? 0 : node->height;
+    return (node == NULL) ? 0 : node->height;
 }
 
 int max(int a, int b) {
@@ -95,6 +94,5 @@ int max(int a, int b) {
 }
 
 int getBalance(avl_node *node) {
-    if(node==NULL) handleError(INT_INPUT_ERROR);
-    else return getHeight(node->right) - getHeight(node->left);
+    return (node ==  NULL)? 0 : getHeight(node->right) - getHeight(node->left);
 }

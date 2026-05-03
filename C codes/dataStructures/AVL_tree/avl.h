@@ -6,7 +6,7 @@ typedef struct avl_node avl_node;
 
 typedef struct Pair {
     int key;
-    void *value;
+    void *data;
 } Pair;
 
 // tree_map createTreeMap(int key, void *data);
