@@ -2,12 +2,14 @@
 #define AVL_H
 
 typedef struct avl_node avl_node;
-typedef struct tree_map tree_map;
+// typedef struct tree_map tree_map;
 
 typedef struct Pair {
     int key;
     void *value;
 } Pair;
+
+// tree_map createTreeMap(int key, void *data);
 
 // Create a node for the tree structure and returns its pointer
 avl_node *createNode(int key, void *data)

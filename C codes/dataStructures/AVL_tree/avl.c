@@ -8,10 +8,13 @@ struct avl_node {
     struct avl_node *left, *right;
 };
 
+/* +++
 struct tree_map {
     avl_node *root;
     avl_node *current;
 }
+--- */
+// tree_map createTreeMap(int key, void *data);
 
 avl_node *createNode(int key, void *data) {
 
@@ -26,12 +29,11 @@ avl_node *createNode(int key, void *data) {
     new->pair->key = key;
     new->pair->data = data;
     new->parent = new->right = new->left = NULL;
+    new->height = 0;
     return new;
 }
 
-avl_node *insertNode(avl_node *node, int key, void *data) {
-    
-}
+// avl_node *insertNode(avl_node *node, int key, void *data)
 
 /* +++ Rotations ---*/
 
