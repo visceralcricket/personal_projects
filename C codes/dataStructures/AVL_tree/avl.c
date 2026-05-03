@@ -5,7 +5,6 @@
 struct avl_node {
     Pair *pair;
     int height;
-    struct avl_node *parent;
     struct avl_node *left, *right;
 };
 
@@ -44,7 +43,7 @@ avl_node *createNode(int key, void *data) {
 avl_node *rotateRight(avl_node *y) {
     if(y==NULL) return NULL;
 
-    avl_node *x = node->left;
+    avl_node *x = y->left;
     avl_node *T2 = x->right;
 
     x->right = y;
