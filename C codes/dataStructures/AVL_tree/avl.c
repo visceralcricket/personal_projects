@@ -1,7 +1,6 @@
 #include "avl.h"
 #include <stdio.h>
 #include <stdlib.h>
-#define INT_INPUT_ERROR 0
 
 struct avl_node {
     Pair *pair;
@@ -18,18 +17,6 @@ struct tree_map {
 --- */
 // tree_map createTreeMap(int key, void *data);
 
-void handleError(int errValue) {
-    switch(errValue) {
-        case INT_INPUT_ERROR:
-            puts("Non-valid integer detected, please try again.");
-            break;
-
-        default:
-            puts("Unexpected error, please try again.");
-            break;
-    }
-    exit(EXIT_FAILURE);
-}
 
 avl_node *createNode(int key, void *data) {
     if(data==NULL) return NULL;
