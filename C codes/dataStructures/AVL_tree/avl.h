@@ -6,7 +6,7 @@ typedef struct tree_map tree_map;
 
 typedef struct Pair {
     int key;
-    void *data;
+    void *value;
 } Pair;
 
 // Testing function
@@ -18,18 +18,25 @@ void *handleData(int data) {
 }
 
 // Create a node for the tree structure and returns its pointer
-avl_node *createNode(int value);
+avl_node *createNode(int key, void *data)
 
 // Inserts a value inside the tree
-avl_node *insertTree(avl_node *node, int value);
+avl_node *insertNode(avl_node *node, int data);
 
 // Searches for a specified value in the tree and returns its node's pointer
-avl_node *searchTree(avl_node *node, int value);
+avl_node *searchNode(avl_node *node, int data);
 
 // Searches for the smallest value and returns the pointer to its node
 avl_node *minimum(avl_node *node);
 
-int height(avl_node *node);
+/*+++ Rotations ---*/
+
+avl_node *rotateRight(avl_node *y);
+
+avl_node *rotateLeft(avl_node *x);
+
+/* +++ Helpers --- */
+int getHeight(avl_node *node);
 
 int max(int a, int b);
 
